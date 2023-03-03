@@ -1,0 +1,10 @@
+version: '3'
+services:
+  azure_functions_app:
+    build:
+      target: azure_functions_core_tools
+      context: .
+    volumes:
+    - ./:/app
+    ports:
+    - 7071:7071
