@@ -14,14 +14,14 @@ repos:
 
 # Format YAML & TOML files prettily
 - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-  rev: v2.7.0
+  rev: v2.8.0
   hooks:
   - id: pretty-format-yaml
     args: [--autofix, --indent, '2']
 
 # Remove unused imports, unused variables and duplicate-keys with autoflake
 - repo: https://github.com/PyCQA/autoflake
-  rev: v2.0.1
+  rev: v2.0.2
   hooks:
   - id: autoflake
     args:
@@ -64,13 +64,13 @@ repos:
 
 # Static type checker
 - repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.0.1
+  rev: v1.1.1
   hooks:
   - id: mypy
 
 # Find common security issues in Python with bandit
 - repo: https://github.com/PyCQA/bandit
-  rev: 1.7.4
+  rev: 1.7.5
   hooks:
   - id: bandit
     exclude: ^tests/.*\.py$

@@ -1,11 +1,11 @@
 import asyncio
 import logging
 import sys
-import uuid
 from collections import defaultdict
 from time import perf_counter
 
 from aiohttp import ClientSession
+
 
 async def gather_requests(base_url, headers, concurrent_num):
     async with ClientSession(headers=headers) as aiohttp_client:
