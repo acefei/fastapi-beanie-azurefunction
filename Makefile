@@ -15,7 +15,11 @@ export PRINT_HELP_PYSCRIPT
 help:
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-start:  ## start azure function app locally
+local.settings.json:
+	@echo "Error: Run cp local.settings.json.in local.settings.json and set DB_URI in local.settings.json"
+	@exit 1
+
+start: local.settings.json  ## start azure function app locally
 	@docker-compose up -d --build
 
 stop:  ## stop azure function app locally

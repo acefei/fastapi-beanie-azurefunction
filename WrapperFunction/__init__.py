@@ -12,8 +12,10 @@ async def get_name(
     name: str,
 ):
     logging.info(f"Connected DB with {app.mongo_client}")
-    await Product(name=name).create()
-    return {"message": f"{name}'s product created successfully"}
+    res = await Product(name=name).create()
+    ret = {"message": f"{name}'s product created successfully with {res}"}
+    logging.info(ret)
+    return ret
 
 
 # [BUG] Support for ASGI startup events
