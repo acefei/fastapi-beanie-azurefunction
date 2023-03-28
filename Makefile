@@ -29,7 +29,7 @@ restart: stop
 	@docker-compose up -d --build
 
 test:  ## test api locally, please ensure start app at first
-	@curl http://localhost:7071/hello/acefei
+	@curl 'http://localhost:7071/newitem/$$submit'  -H 'Content-Type: application/json' -X POST -d {} -v
 
 watch:  ## monitoring log
 	@docker-compose logs -f azure_functions_app

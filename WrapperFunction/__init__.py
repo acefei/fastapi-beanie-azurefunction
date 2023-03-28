@@ -1,21 +1,13 @@
-import logging
-
 import azure.functions as func
 from azure.functions._http_asgi import AsgiRequest, AsgiResponse
 
 from FastAPIApp import app  # Main API application
-from FastAPIApp.database import Product
 
 
-@app.get("/hello/{name}")
-async def get_name(
-    name: str,
-):
-    logging.info(f"Connected DB with {app.mongo_client}")
-    res = await Product(name=name).create()
-    ret = {"message": f"{name}'s product created successfully with {res}"}
-    logging.info(ret)
-    return ret
+@app.post("/newitem/$submit")
+async def newitem():
+    # logging.info(f"Connected DB with {app.mongo_client}")
+    return {"msg": "ok"}
 
 
 # [BUG] Support for ASGI startup events

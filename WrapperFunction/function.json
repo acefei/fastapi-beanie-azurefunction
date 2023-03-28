@@ -7,9 +7,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get"
+        "post"
       ],
-      "route": "/hello/{name}"
+      "route": "newitem/$submit"
     },
     {
       "type": "http",

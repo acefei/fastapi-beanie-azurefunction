@@ -11,7 +11,7 @@ async def gather_requests(base_url, headers, concurrent_num):
     async with ClientSession(headers=headers) as aiohttp_client:
         logging.info(f"Sending {concurrent_num} requests simultaneously.")
         start_time = perf_counter()
-        tasks = [aiohttp_client.get(base_url) for _ in range(concurrent_num)]
+        tasks = [aiohttp_client.post(base_url) for _ in range(concurrent_num)]
         responses = await asyncio.gather(*tasks, return_exceptions=True)
         end_time = perf_counter()
 
@@ -29,7 +29,7 @@ async def sequent_requests(base_url, headers, concurrent_num):
     logging.info(f"Sending {concurrent_num} requests sequentially.")
     for _ in range(concurrent_num):
         async with ClientSession(headers=headers) as aiohttp_client:
-            res = await aiohttp_client.get(base_url)
+            res = await aiohttp_client.post(base_url)
             responses.append(res)
             await asyncio.sleep(1)
 
@@ -48,8 +48,7 @@ async def main():
         level=logging.DEBUG if "debug" in sys.argv else logging.INFO, format=("[%(levelname)s] %(message)s")
     )
 
-    # base_url = "https://dedicatedplan.azurewebsites.net//hello/acefei"
-    base_url = "https://fastapi-beanie-function-23308794.azurewebsites.net/hello/acefei"
+    base_url = "https://fastapi-beanie-function-23308794.azurewebsites.net/newitem/$submit"
     headers = {"User-Agent": "test function app"}
     if "bulk" in sys.argv:
         await gather_requests(base_url, headers, concurrent_num)
